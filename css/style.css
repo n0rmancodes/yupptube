@@ -1,0 +1,15 @@
+h1 {
+  font-family: Verdana;
+  font-size:48px;
+  color:white;
+}
+
+p {
+  font-family:Arial;
+  font-size:14px;
+  color:white;
+}
+
+body {
+  background-color: black; 
+}
