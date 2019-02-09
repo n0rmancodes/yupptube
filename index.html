@@ -19,14 +19,18 @@
     <p id="output"><span id=error></span></p>
     <center id="player"></center>
     <script type="text/javascript">
+      <script type="text/javascript">
       var d = document.getElementById("download");
       d.addEventListener("keydown", function (e) {
         if (e.keyCode == 13) {
-          download()
+          start()
         } 
       });
+      function start() {
+        document.getElementById("help").innerHTML = "If the download link doesn't work, go <a href=/youtubemp4/errors>here for assistance</a>."
+        download()
+      }
       function download() {
-        if (input.startsWith === "https://youtu.be/") {}
         var input = document.getElementById("download").value;
         const Http = new XMLHttpRequest();
         const url='https://you-link.herokuapp.com/?url=' + input;
@@ -38,16 +42,13 @@
         var quality = json[0].quality
         var type = json[0].type.substring(6,10)
         var type_ = type.replace(";", "")
-        var reason = json.reason
-        if (!reason === undefined) {error()}
         var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_;
         var video = "<video controls autoplay width='720' height='360'><source src=" + url + " type=video/" + type_ +"></video>";
         document.getElementById("output").innerHTML = rete;
         document.getElementById("player").innerHTML = video;
       }
-      function error {
-        document.getElementById("error").innerHTML = reason;
-      }
+    }
+    </script>
     </script>
   
 </body></html>
