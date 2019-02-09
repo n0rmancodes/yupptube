@@ -19,7 +19,6 @@
     <p id="output"><span id=error></span></p>
     <center id="player"></center>
     <script type="text/javascript">
-      <script type="text/javascript">
       var d = document.getElementById("download");
       d.addEventListener("keydown", function (e) {
         if (e.keyCode == 13) {
@@ -30,6 +29,21 @@
         document.getElementById("help").innerHTML = "If the download link doesn't work, go <a href=/youtubemp4/errors>here for assistance</a>."
         download()
       }
+      function metadata() {
+        var input = document.getElementById("download").value
+        var id = input.substring(28,43)
+        var md = "https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=" + id +"&key=AIzaSyDFuCeR-jD2YyoJG3-nYw6qrSofqQuNHnk"
+        const Http = new XMLHttpRequest();
+        Http.open("GET", md);
+        Http.send();
+        Http.onreadystatechange=(e)=>{
+          var meta = JSON(HTTP.responseText);
+          var title = meta.items[0].snippet.title;
+          document.getElementById("title").innerHTML = title;
+          alert(title)
+        }
+        download() 
+      }
       function download() {
         var input = document.getElementById("download").value;
         const Http = new XMLHttpRequest();
@@ -37,16 +51,16 @@
         Http.open("GET", url);
         Http.send();
         Http.onreadystatechange=(e)=>{
-            var json = JSON.parse(Http.responseText)
-            var url = json[0].url
-            var quality = json[0].quality
-            var type = json[0].type.substring(6,10)
-            var type_ = type.replace(";", "")
-            var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_;
-            var video = "<video controls autoplay width='720' height='360'><source src=" + url + " type=video/" + type_ +"></video>";
-            document.getElementById("output").innerHTML = rete;
-            document.getElementById("player").innerHTML = video;
+        var json = JSON.parse(Http.responseText)
+        var url = json[0].url
+        var quality = json[0].quality
+        var type = json[0].type.substring(6,10)
+        var type_ = type.replace(";", "")
+        var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_;
+        var video = "<video controls autoplay width='720' height='360'><source src=" + url + " type=video/" + type_ +"></video>";
+        document.getElementById("output").innerHTML = rete;
+        document.getElementById("player").innerHTML = video;
       }
     }
-      </script>
+    </script>
 </body></html>
