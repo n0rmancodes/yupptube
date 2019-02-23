@@ -26,6 +26,7 @@
         } 
       });
       function start() {
+        var d = document.getElementById("download");
         if (d.startsWith("https://youtube.com/watch?v=") === false) {document.getElementById("err").innerHTML = "Error: Invalid link."}
         download()
       }
