@@ -3,17 +3,17 @@
         <title>YuppTube | Download YouTube Videos in HD</title>
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="images/favicon.ico">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <style>
             input {
-                font-family: 'Montserrat';
+                font-family: 'Roboto';
             }
         </style>
     </head>
   <body>
     <h1>► YuppTube</h1>
     <p>A new and (probably) unblocked YouTube downloader without ads!<br> Made by NormanTheIdiot<br> <b>NOTE</b>: This doesn't work for some YouTube videos, namely music videos and movies.</p>
-    <p id="help"></p>
+    <p id="err" style="color:red;"></p>
     <input id="download" type="text" placeholder="Insert YouTube Link" maxlength="43" style="width: 300px;"><button onclick="start()">Grab Links</button>
     <h2 id="title"></h2>
     <p id="output"><span id=error></span></p>
@@ -26,7 +26,6 @@
         } 
       });
       function start() {
-        document.getElementById("help").innerHTML = "If the download link doesn't work, go <a href=/youtubemp4/errors>here for assistance</a>."
         download()
       }
       function download() {
@@ -41,6 +40,8 @@
         var quality = json[0].quality
         var type = json[0].type.substring(6,10)
         var type_ = type.replace(";", "")
+        var reason = json.reason;
+        if !(reason === undefined) {document.getElementById("err").innerHTML = reason}
         var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_;
         var video = "<video controls autoplay width='720' height='360'><source src=" + url + " type=video/" + type_ +"></video>";
         document.getElementById("output").innerHTML = rete;
