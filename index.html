@@ -15,7 +15,7 @@
     <p>A new and (probably) unblocked YouTube downloader without ads!<br> Made by NormanTheIdiot<br> <b>NOTE</b>: This doesn't work for some YouTube videos, namely music videos and movies.</p>
     <p id="err" style="color:red;"></p>
     <input id="download" type="text" placeholder="Insert YouTube Link" maxlength="43" style="width: 300px;"><button onclick="start()">Grab Links</button>
-    <h2 id="title"></h2>
+    <p id=load style="display:none;">Loading...</p>
     <p id="output"><span id=error></span></p>
     <center id="player"></center>
     <script type="text/javascript">
@@ -26,8 +26,7 @@
         } 
       });
       function start() {
-        var d = document.getElementById("download");
-        if (d.startsWith("https://youtube.com/watch?v=") === false) {document.getElementById("err").innerHTML = "Error: Invalid link."}
+        document.getElementById("load").style.display = "block";
         download()
       }
       function download() {
@@ -42,10 +41,9 @@
         var quality = json[0].quality
         var type = json[0].type.substring(6,10)
         var type_ = type.replace(";", "")
-        var reason = json[0].reason;
-        if !(reason === undefined) {document.getElementById("err").innerHTML = reason}
         var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_;
         var video = "<video controls autoplay width='720' height='360'><source src=" + url + " type=video/" + type_ +"></video>";
+        document.getElementById("load").style.display = 'none';
         document.getElementById("output").innerHTML = rete;
         document.getElementById("player").innerHTML = video;
       }
