@@ -32,8 +32,7 @@
 		document.getElementById("ob").style.display = "none";
 		document.getElementById("err").style.display = "none";
 		document.getElementById("player").pause;
-        if (document.getElementById("download").startsWith("https://www.youtube.com/watch?v=") === true) {download()}
-        if (!document.getElementById("download").startsWith("https://www.youtube.com/watch?v=") === true) {serr(); document.getElementById("load").style.display = 'none';}
+        download()
       }
       function download() {
         var input = document.getElementById("download").value;
