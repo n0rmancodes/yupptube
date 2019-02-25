@@ -33,7 +33,7 @@
 		document.getElementById("err").style.display = "none";
 		document.getElementById("player").pause;
         if (document.getElementById("download").value.startsWith("https://youtube.com/watch?v=") === true) {download()}
-        if (!document.getElementById("download").value.startsWith("https://youtube.com/watch?v=") === true) {serr()}
+        if (!document.getElementById("download").value.startsWith("https://youtube.com/watch?v=") === true) {serr(); document.getElementById("load").style.display = 'none';}
       }
       function download() {
         var input = document.getElementById("download").value;
