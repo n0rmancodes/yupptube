@@ -30,6 +30,7 @@
       function start() {
         document.getElementById("load").style.display = "block";
 		document.getElementById("ob").style.display = "none";
+		document.getElementById("err").style.display = "none";
 		document.getElementById("player").pause;
         if (document.getElementById("download").value.startsWith("https://youtube.com/watch?v=") === true) {download()}
         if (!document.getElementById("download").value.startsWith("https://youtube.com/watch?v=") === true) {serr()}
@@ -51,6 +52,7 @@
         document.getElementById("load").style.display = 'none';
         document.getElementById("output").innerHTML = rete;
         document.getElementById("player").innerHTML = video;
+		document.getElementById("ob").style.display = "block";
       }
      }
      function serr() {
