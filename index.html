@@ -15,7 +15,7 @@
     <p>A new and (probably) unblocked YouTube downloader without ads!<br> Made by NormanTheIdiot<br> <b>NOTE</b>: This doesn't work for some YouTube videos, namely music videos and movies.</p>
     <p id="err" style="color:red;"></p>
     <input id="download" type="text" placeholder="Insert YouTube Link" maxlength="43" style="width: 300px;"><button onclick="start()">Grab Links</button>
-    <p id=load style="display:none;">Loading...</p>
+    <div id=load style="display:none;"><p>Loading...</p></div>
     <p id="output"><span id=error></span></p>
     <center id="player"></center>
     <script type="text/javascript">
@@ -27,7 +27,8 @@
       });
       function start() {
         document.getElementById("load").style.display = "block";
-        download()
+        if (document.getElementById("download").value.startsWith("http://youtube.com/watch?v=") === true) {download()}
+        if !(document.getElementById("download").value.startsWith("http://youtube.com/watch?v=") === true) {serr()}
       }
       function download() {
         var input = document.getElementById("download").value;
@@ -47,6 +48,9 @@
         document.getElementById("output").innerHTML = rete;
         document.getElementById("player").innerHTML = video;
       }
-    }
+     }
+     function serr() {
+        document.getElementById("err").innerHTML = "This link is not valid.<br> Make sure the link is <b>exactly</b> like this<br><code>https://youtube.com/watch?v=XXXXXX</code>"   
+     }
     </script>
 </body></html>
