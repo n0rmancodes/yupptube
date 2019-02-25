@@ -28,7 +28,7 @@
       function start() {
         document.getElementById("load").style.display = "block";
         if (document.getElementById("download").value.startsWith("http://youtube.com/watch?v=") === true) {download()}
-        if !(document.getElementById("download").value.startsWith("http://youtube.com/watch?v=") === true) {serr()}
+        if (!document.getElementById("download").value.startsWith("http://youtube.com/watch?v=") === true) {serr()}
       }
       function download() {
         var input = document.getElementById("download").value;
