@@ -61,7 +61,7 @@
 		document.getElementById("err").innerHTML = "This link is not valid.<br> Make sure the link is <b>exactly</b> like this<br><code>https://www.youtube.com/watch?v=XXXXXX</code>"   
      }
      function check() {
-	if (window.location.href.indexOf("?url") != -1) {var cururl = window.location.href; document.getElementById("download").value = cururl.substring(44, 999)}     
+	if (window.location.href.indexOf("?url") != -1) {var cururl = window.location.href; document.getElementById("download").value = cururl.substring(44, 999); download();}     
      }
     </script>
 </body></html>
