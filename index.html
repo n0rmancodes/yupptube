@@ -47,13 +47,15 @@
         var quality = json[0].quality
         var type = json[0].type.substring(6,10)
         var type_ = type.replace(";", "")
+	if (quality === "hd720") {var quality = "720p"}
+	if (quality === "medium") {var quality = "SD (240p/360p/480p)"}
         var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_; + " | <a onclick=changeres()>Chnage Aspect Ratio</a>"
         var video = "<video id=video controls autoplay width='640' height='360'><source src=" + url + " type=video/" + type_ +"></video>";
         document.getElementById("load").style.display = 'none';
         document.getElementById("output").innerHTML = rete;
         document.getElementById("player").innerHTML = video;
-		document.getElementById("ob").style.display = "block";
-		document.getElementById("player").play;
+	document.getElementById("ob").style.display = "block";
+	document.getElementById("player").play;
       }
      }
      function serr() {
