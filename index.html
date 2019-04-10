@@ -47,28 +47,19 @@
         var quality = json[0].quality
         var type = json[0].type.substring(6,10)
         var type_ = type.replace(";", "")
-	if (quality === "hd720") {var quality = "720p"}
-	if (quality === "medium") {var quality = "SD (240p/360p/480p)"}
-        var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_; + " | <a onclick=changeres()>Chnage Aspect Ratio</a>"
+		if (quality === "hd720") {var quality = "720p"}
+		if (quality === "medium") {var quality = "SD (240p/360p/480p)"}
+        var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_ + " | <a onclick=changeres()>Chnage Aspect Ratio</a>"
         var video = "<video id=video controls autoplay width='640' height='360'><source src=" + url + " type=video/" + type_ +"></video>";
         document.getElementById("load").style.display = 'none';
         document.getElementById("output").innerHTML = rete;
         document.getElementById("player").innerHTML = video;
-	document.getElementById("ob").style.display = "block";
-	document.getElementById("player").play;
+		document.getElementById("ob").style.display = "block";
+		document.getElementById("player").play;
       }
-     }
-     function serr() {
-		document.getElementById("err").style.display = 'block';
-		document.getElementById("err").innerHTML = "This link is not valid.<br> Make sure the link is <b>exactly</b> like this<br><code>https://www.youtube.com/watch?v=XXXXXX</code>"   
      }
      function check() {
 	if (window.location.href.indexOf("?url") != -1) {var cururl = window.location.href; document.getElementById("download").value = cururl.substring(44, 999); start();}     
-     }
-     function changeres() {
-	var curres = document.getElementById('video').width
-	if (curres === "360") {curres = "480"}
-	if (curres === "480") {curres = "360"}
      }
     </script>
 </body></html>
