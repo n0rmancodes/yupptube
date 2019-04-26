@@ -12,54 +12,5 @@
     </head>
   <body>
     <h1>► YuppTube</h1>
-    <p>A new and (probably) unblocked YouTube downloader without ads!<br> Made by NormanTheIdiot<br>Drag "<a href="javascript:void(open('https://n0rmancodes.github.io/yupptube/?url='+window.location.href))">Download with YuppTube</a>" (that link) into your bookmarks bar for easier downloading.<br><b>NOTE</b>: This doesn't work for some YouTube videos, namely music videos and movies.</p>
-    <p id="err" style="color:red;"></p>
-    <input id="download" type="text" placeholder="Insert YouTube Link" maxlength="43" style="width: 300px;" autocomplete=off><button onclick="start()">Grab Links</button>
-    <div id=load style="display:none;"><p>Loading...<br><span style=color:red><b>WARNING!</b> If the download doesn't appear within 15 seconds, your video cannot be downloaded.</span></p><img src="images/loading.gif"></div>
-	<div id=ob>
-		<p id="output"></p>
-		<div id="player"></div>
-	</div>
-    <script type="text/javascript">
-      window.onload(check())
-      var d = document.getElementById("download");
-      d.addEventListener("keydown", function (e) {
-        if (e.keyCode == 13) {
-          start()
-        } 
-      });
-      function start() {
-        document.getElementById("load").style.display = "block";
-		document.getElementById("ob").style.display = "none";
-		document.getElementById("err").style.display = "none";
-		document.getElementById("player").pause;
-        download()
-      }
-      function download() {
-        var input = document.getElementById("download").value;
-        const Http = new XMLHttpRequest();
-        const url='https://you-link.herokuapp.com/?url=' + input;
-        Http.open("GET", url);
-        Http.send();
-        Http.onreadystatechange=(e)=>{
-        var json = JSON.parse(Http.responseText)
-        var url = json[0].url
-        var quality = json[0].quality
-        var type = json[0].type.substring(6,10)
-        var type_ = type.replace(";", "")
-		if (quality === "hd720") {var quality = "720p"}
-		if (quality === "medium") {var quality = "SD (240p/360p/480p)"}
-        var rete = "<a href=" + url + " download='filename'>Download Video</a> | Quality: " + quality + " | Type: " + type_ + " | <a onclick=changeres()>Chnage Aspect Ratio</a>"
-        var video = "<video id=video controls autoplay width='640' height='360'><source src=" + url + " type=video/" + type_ +"></video>";
-        document.getElementById("load").style.display = 'none';
-        document.getElementById("output").innerHTML = rete;
-        document.getElementById("player").innerHTML = video;
-		document.getElementById("ob").style.display = "block";
-		document.getElementById("player").play;
-      }
-     }
-     function check() {
-	if (window.location.href.indexOf("?url") != -1) {var cururl = window.location.href; document.getElementById("download").value = cururl.substring(44, 999); start();}     
-     }
-    </script>
+    <p>Our API is no longer in service, please use <a href="https://youtubemp4.site">this site</a> to download YouTube videos without ads. We are sorry for any inconvience caused!</p>
 </body></html>
